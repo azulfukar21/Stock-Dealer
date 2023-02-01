@@ -1,0 +1,14 @@
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+Stocks=[]
+
+url="https://www.isyatirim.com.tr/tr-tr/analiz/hisse/Sayfalar/default.aspx"
+r=requests.get(url)
+s=BeautifulSoup(r.text,"html.parser")
+s1=s.find("select",id="ddlMenuShareSearch")
+for a in s1:
+    Stocks.append(a)
+
+print(Stocks)
